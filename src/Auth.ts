@@ -313,8 +313,16 @@ export default class Auth {
     this.token_changed_functions.push(fn);
   }
 
+  public removeOnTokenChanged(fn: Function): void {
+    this.token_changed_functions = this.token_changed_functions.filter(e => fn !== e);
+  }
+
   public onAuthStateChanged(fn: Function): void {
     this.auth_changed_functions.push(fn);
+  }
+
+  public removeOnAuthStateChanged(fn: Function): void {
+    this.auth_changed_functions = this.auth_changed_functions.filter(e => fn !== e);
   }
 
   public isAuthenticated(): boolean | null {
